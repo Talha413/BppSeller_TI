@@ -1,11 +1,15 @@
 import 'dart:developer';
 
+import 'package:bpp_seller_ti/pages/screens/all-yours_page.dart';
+import 'package:bpp_seller_ti/pages/screens/best_deals_page.dart';
+import 'package:bpp_seller_ti/pages/screens/custom-drawer_page.dart';
 import 'package:bpp_seller_ti/pages/screens/custom_appBar.dart';
 import 'package:bpp_seller_ti/pages/screens/hot_deals.dart';
 import 'package:bpp_seller_ti/pages/screens/popular_on_bpp_shop.dart';
 import 'package:bpp_seller_ti/pages/screens/slider_page.dart';
 import 'package:bpp_seller_ti/pages/screens/tab_bar_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -26,6 +30,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     //log("${MediaQuery.of(context).size.width}");
     // log("${MediaQuery.of(context).size.height}");
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent, // Set status bar color to transparent
+    ));
     return Scaffold(
       key: _scaffoldKey,
       backgroundColor: Color(0xfff4f4f4),
@@ -54,6 +61,14 @@ class _HomePageState extends State<HomePage> {
       //     Icon(Icons.abc),
       //   ],
       // ),
+      // appBar: CustomAppbar(scaffoldKey: _scaffoldKey),
+      // appBar:AppBar(
+      //   title:Column(
+      //     children: [
+      //       CustomAppbar(scaffoldKey: _scaffoldKey),
+      //     ],
+      //   ),
+      // ),
       appBar: AppBar(
         elevation: 0,
         toolbarHeight: 62.h,
@@ -62,7 +77,7 @@ class _HomePageState extends State<HomePage> {
           CustomAppbar(scaffoldKey: _scaffoldKey),
         ],
       ),
-     // drawer: Drawer(),
+     drawer: CustomDrawer(),
       body: Container(
         height: double.infinity,
         width: double.infinity,
@@ -89,8 +104,8 @@ class _HomePageState extends State<HomePage> {
                 width: 360.w,
                 height: 80.h,
                 margin: EdgeInsets.only(
-                    left: 12.w, top: 24.h, right: 12.w, bottom: 24.h),
-                color: Colors.teal,
+                    left: 12.w, top: 6.h, right: 12.w, bottom: 24.h),
+                //color: Colors.teal,
                 child: Row(
                   children: [
                     Container(
@@ -98,7 +113,7 @@ class _HomePageState extends State<HomePage> {
                       height: 80.h,
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(10),
-                          child: Image.asset('images/image67(1).jpg')),
+                          child: Image.asset('assets/images/image67(1).jpg',fit: BoxFit.cover,)),
                     ),
                     SizedBox(
                       width: 12.w,
@@ -106,45 +121,55 @@ class _HomePageState extends State<HomePage> {
                     Container(
                       width: 104.w,
                       height: 80.h,
-                      child: Image.asset('images/Group1000005515.jpg'),
+                      child: Image.asset('assets/images/Group1000005515.jpg'),
                     ),
                   ],
                 ),
               ),
-
-              TabBarPage(),
-
-              SizedBox(height: 45.h,),
+              // TabBarPage(),
               TabBarDemo(),
 
               Container(
                 width: 336.w,
                 height: 116.h,
+
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  //color: Colors.red,
+                ),
                 margin: EdgeInsets.only(
                     left: 12.w, top: 24.h, right: 12.w, bottom: 24.h),
-                child: Image.asset('images/image49.jpg'),
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.asset('assets/images/image49.jpg',width: 336,height: 116,fit: BoxFit.cover,)),
               ),
-              Text("Best Deals......"),
-              Container(
-                height: 10.h,
-                width: 336.w,
-                color: Colors.red,
-              ),
-              HotDealsPage(),
+              // Text("Best Deals......"),
+              BestDealsPage(),
               Container(
                 width: 336.w,
                 height: 116.h,
+
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  //color: Colors.red,
+                ),
                 margin: EdgeInsets.only(
                     left: 12.w, top: 24.h, right: 12.w, bottom: 24.h),
-                child: Image.asset('images/image49.jpg'),
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.asset('assets/images/image49.jpg',width: 336,height: 116,fit: BoxFit.cover,)),
               ),
-              Text("All Yours......"),
-              Container(
-                height: 10.h,
-                width: 336.w,
-                color: Colors.red,
-              ),
-              HotDealsPage(),
+              AllYoursPage(),
+
+              // Text("All Yours......"),
+              // Container(
+              //   height: 10.h,
+              //   width: 336.w,
+              //   color: Colors.red,
+              // ),
+              // HotDealsPage(),
+
+              //******************************
               // Container(
               //   child: GridView.builder(
               //     shrinkWrap: true,
@@ -298,68 +323,68 @@ class _HomePageState extends State<HomePage> {
               //     // gridDelegate: SLiv
               //   ),
               // ),
-              RatingBarIndicator(
-                rating: 2.50,
-                itemBuilder: (context, index) => Icon(
-                  Icons.star,
-                  color: Colors.amber,
-                ),
-                itemCount: 5,
-                itemSize: 50.0,
-                direction: Axis.horizontal,
-              ),
-              RatingBar(
-              initialRating: 3,
-              direction: Axis.horizontal,
-              allowHalfRating: true,
-              itemCount: 5,
-              ratingWidget: RatingWidget(
-                full: Icon(Icons.star),
-                half: Icon(Icons.star),
-                empty: Icon(Icons.star),
-                // full: _image('assets/heart.png'),
-                // half: _image('assets/heart_half.png'),
-                // empty: _image('assets/heart_border.png'),
-              ),
-              itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-              onRatingUpdate: (rating) {
-                print(rating);
-              },
-            ),
-              // Padding(
-              //   padding: EdgeInsets.only(top: 1.h,left: 30.w),
-              //   child: Row(
-              //     children: [
-              //       Container(
-              //
-              //         // margin: EdgeInsets.only(top: 10.h,left: 30.w),
-              //         height: 12.h,width:76.w,
-              //         child: RatingBar.builder(
-              //             initialRating: productModelList[i].productRating as double,
-              //             minRating: 1,
-              //             direction: Axis.horizontal,
-              //             allowHalfRating: true,
-              //             itemCount: 5,
-              //             itemSize: 15.w,
-              //             itemPadding: EdgeInsets.symmetric(horizontal: .1),
-              //             itemBuilder: (context,i)=>Icon(Icons.star,color:Color(0xffFDC040) ,),
-              //
-              //             onRatingUpdate: (rating){}
-              //         ),
-              //       ),
-              //       Container(
-              //         margin: EdgeInsets.only(left: 2.w,top: 5.h),
-              //         height: 15.h,
-              //         child: Text("(""${productModelList[i].ratingCount}"")",style: TextStyle(
-              //           color: Color(0xFF333333),
-              //           fontSize: 12.sp,
-              //           fontWeight: FontWeight.w400,
-              //         ),),
-              //       )
-              //     ],
-              //   ),
-              // ),
-              Text("(" "0" ")"),
+            //   RatingBarIndicator(
+            //     rating: 2.50,
+            //     itemBuilder: (context, index) => Icon(
+            //       Icons.star,
+            //       color: Colors.amber,
+            //     ),
+            //     itemCount: 5,
+            //     itemSize: 50.0,
+            //     direction: Axis.horizontal,
+            //   ),
+            //   RatingBar(
+            //   initialRating: 3,
+            //   direction: Axis.horizontal,
+            //   allowHalfRating: true,
+            //   itemCount: 5,
+            //   ratingWidget: RatingWidget(
+            //     full: Icon(Icons.star),
+            //     half: Icon(Icons.star),
+            //     empty: Icon(Icons.star),
+            //     // full: _image('assets/heart.png'),
+            //     // half: _image('assets/heart_half.png'),
+            //     // empty: _image('assets/heart_border.png'),
+            //   ),
+            //   itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+            //   onRatingUpdate: (rating) {
+            //     print(rating);
+            //   },
+            // ),
+            //   // Padding(
+            //   //   padding: EdgeInsets.only(top: 1.h,left: 30.w),
+            //   //   child: Row(
+            //   //     children: [
+            //   //       Container(
+            //   //
+            //   //         // margin: EdgeInsets.only(top: 10.h,left: 30.w),
+            //   //         height: 12.h,width:76.w,
+            //   //         child: RatingBar.builder(
+            //   //             initialRating: productModelList[i].productRating as double,
+            //   //             minRating: 1,
+            //   //             direction: Axis.horizontal,
+            //   //             allowHalfRating: true,
+            //   //             itemCount: 5,
+            //   //             itemSize: 15.w,
+            //   //             itemPadding: EdgeInsets.symmetric(horizontal: .1),
+            //   //             itemBuilder: (context,i)=>Icon(Icons.star,color:Color(0xffFDC040) ,),
+            //   //
+            //   //             onRatingUpdate: (rating){}
+            //   //         ),
+            //   //       ),
+            //   //       Container(
+            //   //         margin: EdgeInsets.only(left: 2.w,top: 5.h),
+            //   //         height: 15.h,
+            //   //         child: Text("(""${productModelList[i].ratingCount}"")",style: TextStyle(
+            //   //           color: Color(0xFF333333),
+            //   //           fontSize: 12.sp,
+            //   //           fontWeight: FontWeight.w400,
+            //   //         ),),
+            //   //       )
+            //   //     ],
+            //   //   ),
+            //   // ),
+            //   Text("(" "0" ")"),
 
               //********Marker Red ******************
               Container(
