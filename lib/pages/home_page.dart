@@ -121,7 +121,9 @@ class _HomePageState extends State<HomePage> {
                     Container(
                       width: 104.w,
                       height: 80.h,
-                      child: Image.asset('assets/images/Group1000005515.jpg'),
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image.asset('assets/images/Group1000005515.jpg',fit:BoxFit.cover)),
                     ),
                   ],
                 ),

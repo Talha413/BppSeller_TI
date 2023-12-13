@@ -48,12 +48,11 @@ class HotDealsPage extends StatelessWidget {
                       color: Colors.orange,
                     ),
                     duration: const Duration(
-                      hours: 2,
-                      minutes: 40,
+                      hours: 12,
                     ),
                   ),
                 ),
-                Text("View More", style: TextStyle(fontSize: 12.sp)),
+                Text("View More", style: TextStyle(fontSize: 12.sp,color: Color(0xFFFF8800)),),
 
                 // TextButton(
                 //   // style: ButtonStyle(
@@ -91,10 +90,10 @@ class HotDealsPage extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) => HotDealsDetails(
-                            hotDealsNameFromHome:
+                                hotDealsNameFromHome:
                                     productModelList[i].productName,
-                            hotDealsImgFromHome:
-                            productModelList[i].productImg,
+                                hotDealsImgFromHome:
+                                    productModelList[i].productImg,
                               )),
                     );
                     // Navigator.push(
@@ -118,21 +117,23 @@ class HotDealsPage extends StatelessWidget {
                     child: Column(
                       children: [
                         //Product Image
-                        Container(
-                          width: 154.w,
-                          height: 154.h,
-                          margin: EdgeInsets.only(bottom: 12.h),
-                          padding:
-                              EdgeInsets.only(left: 4.w, right: 4.w, top: 4.h),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                          ),
-                          child: Image.asset(
-                            "${productModelList[i].productImg}",
-                            height: 154.h,
+                        Expanded(
+                          child: Container(
                             width: 154.w,
-                            fit: BoxFit.fill,
+                            height: 154.h,
+                            margin: EdgeInsets.only(bottom: 12.h),
+                            padding:
+                                EdgeInsets.only(left: 4.w, right: 4.w, top: 4.h),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                            ),
+                            child: Image.asset(
+                              "${productModelList[i].productImg}",
+                              height: 154.h,
+                              width: 154.w,
+                              fit: BoxFit.fill,
+                            ),
                           ),
                         ),
                         Container(
@@ -160,7 +161,7 @@ class HotDealsPage extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          width: 67.w,
+                          width: 77.w,
                           height: 17.h,
                           //color: Colors.blue,
                           margin: EdgeInsets.only(
@@ -191,8 +192,31 @@ class HotDealsPage extends StatelessWidget {
                                 WidgetSpan(
                                   child: SizedBox(width: 4.w),
                                 ),
+
+                                TextSpan(
+                                  text: "ট",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      //decoration: TextDecoration.lineThrough,
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w700),
+                                ),
+                                WidgetSpan(
+                                  child: SizedBox(width: 4.w),
+                                ),
                                 TextSpan(
                                   text: "${productModelList[i].productPrice}",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      decoration: TextDecoration.lineThrough,
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                                WidgetSpan(
+                                  child: SizedBox(width: 2.w),
+                                ),
+                                TextSpan(
+                                  text: "ট",
                                   style: TextStyle(
                                       color: Colors.black,
                                       decoration: TextDecoration.lineThrough,

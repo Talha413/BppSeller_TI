@@ -22,9 +22,12 @@ class _BottomNavbarPageState extends State<BottomNavbarPage> {
         },
         currentIndex: _currentIndex,
         //backgroundColor: Colors.black12,
+        selectedItemColor: Colors.orange,
+        unselectedItemColor: Colors.orange,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home_filled,color: Colors.orange,),
             label: "Home",
+
           ),
           BottomNavigationBarItem(icon: Icon(Icons.person,color: Colors.orange,),
             label: "Profile",

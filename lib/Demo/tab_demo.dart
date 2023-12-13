@@ -104,13 +104,14 @@ class _TabBarDemoState extends State<TabBarDemo> with TickerProviderStateMixin {
                       Container(
                           height: 15.h,
                           width: 60.w,
-                          color: Colors.yellowAccent,
+                         // color: Color(0xFFFF8800),
                           margin: EdgeInsets.only(left:260.w,right: 12.w,bottom: 8.h),
                           child: Text(
                             "View More",
                             style: TextStyle(
                               fontSize: 12.sp,
                               fontWeight: FontWeight.w400,
+                              color:Color(0xFFFF8800),
                             ),
                           )),
                       Container(
